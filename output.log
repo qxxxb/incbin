@@ -1,0 +1,335 @@
+[*] build cmd = ./build.py g++-10
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[-] splash has incorrect address
+[*] check return code = 1
+
+[*] build cmd = ./build.py g++-10 GENERATE_RESOURCES
+[*] ./src/generate.py GENERATE_RESOURCES
+[*] len(data) = 46095
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py g++-10 LIB_PASSTHROUGH
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DLIB_PASSTHROUGH
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DLIB_PASSTHROUGH
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[-] splash has incorrect address
+[*] check return code = 1
+
+[*] build cmd = ./build.py g++-10 ATTRIBUTE_WEAK
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DATTRIBUTE_WEAK
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DATTRIBUTE_WEAK
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py g++-10 CONST
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DCONST
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[-] splash has incorrect address
+[*] check return code = 1
+
+[*] build cmd = ./build.py g++-10 GENERATE_RESOURCES LIB_PASSTHROUGH
+[*] ./src/generate.py GENERATE_RESOURCES LIB_PASSTHROUGH
+[*] len(data) = 46095
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DLIB_PASSTHROUGH
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DLIB_PASSTHROUGH
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py g++-10 GENERATE_RESOURCES ATTRIBUTE_WEAK
+[*] ./src/generate.py GENERATE_RESOURCES ATTRIBUTE_WEAK
+[*] len(data) = 46095
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DATTRIBUTE_WEAK
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DATTRIBUTE_WEAK
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py g++-10 GENERATE_RESOURCES CONST
+[*] ./src/generate.py GENERATE_RESOURCES CONST
+[*] len(data) = 46095
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DCONST
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[-] main is larger than splash
+[+] splash has correct address
+[*] check return code = 1
+
+[*] build cmd = ./build.py g++-10 LIB_PASSTHROUGH ATTRIBUTE_WEAK
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py g++-10 LIB_PASSTHROUGH CONST
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DLIB_PASSTHROUGH -DCONST
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DLIB_PASSTHROUGH -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[-] splash has incorrect address
+[*] check return code = 1
+
+[*] build cmd = ./build.py g++-10 ATTRIBUTE_WEAK CONST
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DATTRIBUTE_WEAK -DCONST
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DATTRIBUTE_WEAK -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py g++-10 GENERATE_RESOURCES LIB_PASSTHROUGH ATTRIBUTE_WEAK
+[*] ./src/generate.py GENERATE_RESOURCES LIB_PASSTHROUGH ATTRIBUTE_WEAK
+[*] len(data) = 46095
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py g++-10 GENERATE_RESOURCES LIB_PASSTHROUGH CONST
+[*] ./src/generate.py GENERATE_RESOURCES LIB_PASSTHROUGH CONST
+[*] len(data) = 46095
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DLIB_PASSTHROUGH -DCONST
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DLIB_PASSTHROUGH -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[-] main is larger than splash
+[+] splash has correct address
+[*] check return code = 1
+
+[*] build cmd = ./build.py g++-10 GENERATE_RESOURCES ATTRIBUTE_WEAK CONST
+[*] ./src/generate.py GENERATE_RESOURCES ATTRIBUTE_WEAK CONST
+[*] len(data) = 46095
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DATTRIBUTE_WEAK -DCONST
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DATTRIBUTE_WEAK -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py g++-10 LIB_PASSTHROUGH ATTRIBUTE_WEAK CONST
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK -DCONST
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py g++-10 GENERATE_RESOURCES LIB_PASSTHROUGH ATTRIBUTE_WEAK CONST
+[*] ./src/generate.py GENERATE_RESOURCES LIB_PASSTHROUGH ATTRIBUTE_WEAK CONST
+[*] len(data) = 46095
+[*] g++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK -DCONST
+[*] g++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py clang++-10
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[-] splash has incorrect address
+[*] check return code = 1
+
+[*] build cmd = ./build.py clang++-10 GENERATE_RESOURCES
+[*] ./src/generate.py GENERATE_RESOURCES
+[*] len(data) = 46095
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py clang++-10 LIB_PASSTHROUGH
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DLIB_PASSTHROUGH
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DLIB_PASSTHROUGH
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[-] splash has incorrect address
+[*] check return code = 1
+
+[*] build cmd = ./build.py clang++-10 ATTRIBUTE_WEAK
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DATTRIBUTE_WEAK
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DATTRIBUTE_WEAK
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[-] splash has incorrect address
+[*] check return code = 1
+
+[*] build cmd = ./build.py clang++-10 CONST
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DCONST
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[-] splash has incorrect address
+[*] check return code = 1
+
+[*] build cmd = ./build.py clang++-10 GENERATE_RESOURCES LIB_PASSTHROUGH
+[*] ./src/generate.py GENERATE_RESOURCES LIB_PASSTHROUGH
+[*] len(data) = 46095
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DLIB_PASSTHROUGH
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DLIB_PASSTHROUGH
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py clang++-10 GENERATE_RESOURCES ATTRIBUTE_WEAK
+[*] ./src/generate.py GENERATE_RESOURCES ATTRIBUTE_WEAK
+[*] len(data) = 46095
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DATTRIBUTE_WEAK
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DATTRIBUTE_WEAK
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py clang++-10 GENERATE_RESOURCES CONST
+[*] ./src/generate.py GENERATE_RESOURCES CONST
+[*] len(data) = 46095
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DCONST
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[-] main is larger than splash
+[+] splash has correct address
+[*] check return code = 1
+
+[*] build cmd = ./build.py clang++-10 LIB_PASSTHROUGH ATTRIBUTE_WEAK
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[-] splash has incorrect address
+[*] check return code = 1
+
+[*] build cmd = ./build.py clang++-10 LIB_PASSTHROUGH CONST
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DLIB_PASSTHROUGH -DCONST
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DLIB_PASSTHROUGH -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[-] splash has incorrect address
+[*] check return code = 1
+
+[*] build cmd = ./build.py clang++-10 ATTRIBUTE_WEAK CONST
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DATTRIBUTE_WEAK -DCONST
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DATTRIBUTE_WEAK -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[-] splash has incorrect address
+[*] check return code = 1
+
+[*] build cmd = ./build.py clang++-10 GENERATE_RESOURCES LIB_PASSTHROUGH ATTRIBUTE_WEAK
+[*] ./src/generate.py GENERATE_RESOURCES LIB_PASSTHROUGH ATTRIBUTE_WEAK
+[*] len(data) = 46095
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[+] splash has correct address
+[*] check return code = 0
+
+[*] build cmd = ./build.py clang++-10 GENERATE_RESOURCES LIB_PASSTHROUGH CONST
+[*] ./src/generate.py GENERATE_RESOURCES LIB_PASSTHROUGH CONST
+[*] len(data) = 46095
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DLIB_PASSTHROUGH -DCONST
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DLIB_PASSTHROUGH -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[-] main is larger than splash
+[+] splash has correct address
+[*] check return code = 1
+
+[*] build cmd = ./build.py clang++-10 GENERATE_RESOURCES ATTRIBUTE_WEAK CONST
+[*] ./src/generate.py GENERATE_RESOURCES ATTRIBUTE_WEAK CONST
+[*] len(data) = 46095
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DATTRIBUTE_WEAK -DCONST
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DATTRIBUTE_WEAK -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[-] main is larger than splash
+[+] splash has correct address
+[*] check return code = 1
+
+[*] build cmd = ./build.py clang++-10 LIB_PASSTHROUGH ATTRIBUTE_WEAK CONST
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/resources.cpp -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK -DCONST
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[+] main is smaller than splash
+[-] splash has incorrect address
+[*] check return code = 1
+
+[*] build cmd = ./build.py clang++-10 GENERATE_RESOURCES LIB_PASSTHROUGH ATTRIBUTE_WEAK CONST
+[*] ./src/generate.py GENERATE_RESOURCES LIB_PASSTHROUGH ATTRIBUTE_WEAK CONST
+[*] len(data) = 46095
+[*] clang++-10 -shared -o lib.so -fPIC src/lib.cpp src/generated/resources.cpp -DGENERATE_RESOURCES -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK -DCONST
+[*] clang++-10 -L. -Wl,-rpath=. -o main src/main.cpp -l:lib.so -DGENERATE_RESOURCES -DLIB_PASSTHROUGH -DATTRIBUTE_WEAK -DCONST
+[+] lib contains splash
+[+] main does not contain splash
+[-] main is larger than splash
+[+] splash has correct address
+[*] check return code = 1
+
+Successful cmds:
+./build.py g++-10 GENERATE_RESOURCES
+./build.py g++-10 ATTRIBUTE_WEAK
+./build.py g++-10 GENERATE_RESOURCES LIB_PASSTHROUGH
+./build.py g++-10 GENERATE_RESOURCES ATTRIBUTE_WEAK
+./build.py g++-10 LIB_PASSTHROUGH ATTRIBUTE_WEAK
+./build.py g++-10 ATTRIBUTE_WEAK CONST
+./build.py g++-10 GENERATE_RESOURCES LIB_PASSTHROUGH ATTRIBUTE_WEAK
+./build.py g++-10 GENERATE_RESOURCES ATTRIBUTE_WEAK CONST
+./build.py g++-10 LIB_PASSTHROUGH ATTRIBUTE_WEAK CONST
+./build.py g++-10 GENERATE_RESOURCES LIB_PASSTHROUGH ATTRIBUTE_WEAK CONST
+./build.py clang++-10 GENERATE_RESOURCES
+./build.py clang++-10 GENERATE_RESOURCES LIB_PASSTHROUGH
+./build.py clang++-10 GENERATE_RESOURCES ATTRIBUTE_WEAK
+./build.py clang++-10 GENERATE_RESOURCES LIB_PASSTHROUGH ATTRIBUTE_WEAK

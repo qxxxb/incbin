@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include "lib.hpp"
+
+#ifdef GENERATE_RESOURCES
+#include "generated/resources.hpp"
+#else
 #include "resources.hpp"
+#endif
 
 void main_show_splash() {
     printf("splash = %p\n", splash);
